@@ -1,47 +1,60 @@
 package com.example.demo.entity;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.scheduling.config.Task;
+import lombok.Data;
 
 @Entity
+@Data 
+@Table(name="usertable")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="id")
 	private int id;
+	@Column(name="username")
 	private String username;
+	@Column(name="password")
+	private String password;
+	@Column(name="ulocation")
 	private String ulocation;
+	@Column(name="avialability")
 	private String avialability;
+	@Column(name="email")
 	private String email;
+	@Column(name="img")
 	private String img;
+	@Column(name="udoamin")
 	private String udomain;
-    
-		
+	@Column(name="previous_project")
+	private String previous_project;
+	@Column(name="current_Project")
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Project current_project;
-	
-	private String previous_project;
 
 	public User(String username, String ulocation, String avialability, String email, String img, String udomain,
 			String previous_project) {
 		super();
 		this.username = username;
+		this.ulocation = ulocation;
+		this.avialability = avialability;
+		this.email = email;
+		this.img = img;
+		this.udomain = udomain;
+		this.previous_project = previous_project;
+	}
+	
+	public User(String username, String password, String ulocation, String avialability, String email, String img,
+			String udomain, String previous_project) {
+		super();
+		this.username = username;
+		this.password = password;
 		this.ulocation = ulocation;
 		this.avialability = avialability;
 		this.email = email;
@@ -62,6 +75,13 @@ public class User {
 		this.id = id;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getUsername() {
 		return username;
 	}

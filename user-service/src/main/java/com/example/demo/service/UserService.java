@@ -11,5 +11,9 @@ public interface UserService {
 	public User findById(int id);
 	public User saveUser(User user);
 	public void deleteUser(int id);
+	public List<User> findBylocation(String ulocation);
+	public List<User> findByavailability(String avialability);
+	public List<User> findByemail(String email);
+	public List<User> findBydomain(String udomain);
 	
 }

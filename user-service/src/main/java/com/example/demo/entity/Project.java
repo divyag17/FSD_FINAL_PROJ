@@ -4,30 +4,39 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import lombok.Data;
+
 @Entity
+@Data
+@Table(name="projecttble")
 public class Project {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="id")
 	private int id;
+	@Column(name="pname")
 	private String pname;
+	@Column(name="plocation")
 	private String plocation;
+	@Column(name="start_date")
 	private Date start_date;
+	@Column(name="end_date")
 	private Date end_date;
+	@Column(name="pmanager")
 	private String pmanager;
 	
 
